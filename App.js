@@ -1,31 +1,41 @@
-import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import HomeScreen from './screens/HomeScreen';
+import QuizScreen from './screens/QuizzScreen';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
+
   return (
-    <View style={styles.container}>
-      <SafeAreaView>
-        <Text>Difficulté</Text>
-        <TouchableOpacity style={styles.btn}><Text style={styles.btnTxt}>Start the quizz !</Text></TouchableOpacity>
-      </SafeAreaView>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen}
+          options={{
+            title: "Quizz",
+            headerStyle: {
+              backgroundColor: "#000"
+            },
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              color: "#fff"
+            },
+          }}
+        />
+        <Stack.Screen name="Quiz" component={QuizScreen}
+          options={{
+            title: "Quizz",
+            headerStyle: {
+              backgroundColor: "#000"
+            },
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              color: "#fff"
+            },
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginHorizontal: 10,
-    backgroundColor: '#fff',
-  },
-  btn: {
-    backgroundColor: '#000',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 10
-  },
-  btnTxt: {
-    fontSize: 20,
-    color: '#fff',
-    textAlign: 'center'
-  }
-});
