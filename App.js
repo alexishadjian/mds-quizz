@@ -12,8 +12,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen}
-          options={{
-            title: "Quizz",
+          options={({route}) => ({
+            title: 'Home',
             headerStyle: {
               backgroundColor: "#000"
             },
@@ -21,11 +21,13 @@ export default function App() {
               fontWeight: 'bold',
               color: "#fff"
             },
-          }}
+          })}
+          // options={({ route }) => ({ title: route.params.name })}
+
         />
         <Stack.Screen name="Quiz" component={QuizScreen}
-          options={{
-            title: "Quizz",
+          options={({route}) => ({
+            title: `Quizz - ${route.params.difficulty}`,
             headerStyle: {
               backgroundColor: "#000"
             },
@@ -33,7 +35,8 @@ export default function App() {
               fontWeight: 'bold',
               color: "#fff"
             },
-          }}
+            // headerLeft: () => (''),
+          })}
         />
       </Stack.Navigator>
     </NavigationContainer>
